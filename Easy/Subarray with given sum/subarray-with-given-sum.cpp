@@ -17,13 +17,13 @@ class Solution
         long long sum=0;
         while(j<n){
             sum+=arr[j];
-            if(sum<s)j++;
+            if(sum < s) j++;
             else if(sum==s){
                 ans.push_back(i+1);
                 ans.push_back(j+1);
                 return ans;
             }
-            else if(sum>s){
+            else{
                 while( sum >s && i<j){
                     sum-=arr[i];
                     i++;
