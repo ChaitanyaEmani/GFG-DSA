@@ -13,29 +13,19 @@ class Solution{
     int maxIndexDiff(int a[], int n) 
     { 
         // Your code here
-        vector<int>pref(n,0);
-        vector<int>suff(n,0);
-        
-        int maxi = a[n-1];
-        for(int i=n-1;i>=0;i--){
-            maxi = max(maxi, a[i]);
-            suff[i] = maxi;
-        }
-        
-        int mini = a[0];
-        for(int i=0;i<n;i++){
-            mini = min(mini, a[i]);
-            pref[i] = mini;
-        }
-        
-        int i = 0,j=0;
-        int ans = -1;
-        while(i<n && j<n){
-            if(pref[i] <= suff[j]){
-                ans = max(ans, j-i);
-                j++;
-            }else{
-                i++;
+        // Your code here
+        int i=0, j=n-1, ans=INT_MIN;
+        if(n==1)
+        return 0;
+        while(i<=j)
+        {
+            if(a[i]>a[j])
+            j--;
+            else
+            {
+               ans=max(ans, j-i);
+               j=n-1;
+               i++;
             }
         }
         return ans;
